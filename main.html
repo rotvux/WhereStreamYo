@@ -43,8 +43,8 @@
     </nav>
     <!-- FILTER FORM -->
     <div class="container-fluid mt-5 pt-3 bg-secondary fixed-top">
-      <form id="searchForm" class="container-fluid">
-        <div id="inputSearch" class="input-group mb-3 w-100">
+      <form id="searchForm" class="row container-fluid">
+        <div id="inputSearch" class="col-6 input-group mb-3 w-100">
           <input type="search" class="form-control flex-grow-1 rounded-start-2" placeholder="movie or show name"
             autofocus="">
           <button id="searchButton" class="btn btn-dark btn-outline-light btn-block" type="submit">
@@ -52,32 +52,33 @@
           </button>
         </div>
 
-        <div id="filterDropdowns" class="row mt-3 hidden">
-          <div class="mb-3 col-4">
-            <select id="genre" name="genre" class="form-select">
-              <option value="" selected disabled>Genre</option>
-              <option value="action">Action</option>
-              <option value="drama">Drama</option>
-              <option value="comedy">Comedy</option>
-              <option value="thriller">Thriller</option>
-            </select>
-          </div>
-        
-          <div class="mb-3 col-4">
-            <select id="length" name="length" class="form-select">
-              <option value="" selected disabled>Length</option>
-              <option value="lessThan1hr">less than an hour</option>
-              <option value="between1and2hr">between one and two hours</option>
-              <option value="moreThan2hr">more than two hours</option>
-            </select>
-          </div>
-        
-          <div class="mb-3 col-4">
-            <select id="releaseDate" name="releaseDate" class="form-select">
-              <option value="" selected disabled>Release date</option>
-            </select>
-          </div>
-        
+        <div id="filterDropdowns" class="container-fluid hidden">
+          <div class="row">
+            <div class="col-4 mb-3">
+              <select id="genre" name="genre" class="form-select">
+                <option value="" selected disabled>Genre</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="comedy">Comedy</option>
+                <option value="thriller">Thriller</option>
+              </select>
+            </div>
+          
+            <div class="col-4 mb-3">
+              <select id="length" name="length" class="form-select">
+                <option value="" selected disabled>Length</option>
+                <option value="lessThan1hr">less than an hour</option>
+                <option value="between1and2hr">between one and two hours</option>
+                <option value="moreThan2hr">more than two hours</option>
+              </select>
+            </div>
+          
+            <div class="col-4 mb-3">
+              <select id="releaseDate" name="releaseDate" class="form-select">
+                <option value="" selected disabled>Release date</option>
+              </select>
+            </div>
+          </div>        
         </div>
       </form>
       <!-- Filters and Tags Section -->
@@ -85,7 +86,7 @@
         <!-- Container for Selected Filters (Tags) -->
         <div id="selectedTags" class="d-flex flex-wrap"></div>
         <!-- Filters toggle button -->
-        <button id="toggleButton" class="btn btn-dark">Show Filters</button>
+        <button id="toggleButton" class="btn btn-sm btn-dark">Show Filters</button>
       </div>
     </div>
 
