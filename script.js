@@ -1,6 +1,6 @@
 //filter toggle stuff
 const toggleButton = document.getElementById('toggleButton');
-const filterForm = document.getElementById('filterForm');
+const filterDropdowns = document.getElementById('filterDropdowns');
 
 //year select stuff
 const currentYear = new Date().getFullYear();
@@ -17,13 +17,13 @@ for (let year = currentYear; year >= currentYear - 200; year--) {
 
 //toggle Filter Form
 toggleButton.addEventListener('click', function () {
-  if (filterForm.classList.contains('hidden')) {
-    filterForm.classList.remove('hidden');
-    filterForm.classList.add('visible');
+  if (filterDropdowns.classList.contains('hidden')) {
+    filterDropdowns.classList.remove('hidden');
+    filterDropdowns.classList.add('visible');
     toggleButton.textContent = 'Hide Filters';
   } else {
-    filterForm.classList.remove('visible');
-    filterForm.classList.add('hidden');
+    filterDropdowns.classList.remove('visible');
+    filterDropdowns.classList.add('hidden');
     toggleButton.textContent = 'Show Filters';
   }
 });
