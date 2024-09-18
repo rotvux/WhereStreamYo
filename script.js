@@ -1,6 +1,7 @@
 //filter toggle stuff
 const toggleButton = document.getElementById('toggleButton');
 const filterDropdowns = document.getElementById('filterDropdowns');
+const selectedTags = document.getElementById('selectedTags');
 
 //year select stuff
 const currentYear = new Date().getFullYear();
@@ -16,17 +17,22 @@ for (let year = currentYear; year >= currentYear - 200; year--) {
 }
 
 //toggle Filter Form
-toggleButton.addEventListener('click', function () {
+function toggleFilters() {
   if (filterDropdowns.classList.contains('hidden')) {
     filterDropdowns.classList.remove('hidden');
     filterDropdowns.classList.add('visible');
+    selectedTags.classList.remove('visible');//huh?????????????????????????
+    selectedTags.classList.add('hidden');
     toggleButton.textContent = 'Hide Filters';
   } else {
     filterDropdowns.classList.remove('visible');
     filterDropdowns.classList.add('hidden');
+    selectedTags.classList.remove('hidden');//huh?????????????????????????
+    selectedTags.classList.add('visible');
     toggleButton.textContent = 'Show Filters';
   }
-});
+}
+toggleButton.addEventListener('click', toggleFilters);
 
 // Function to create and append a tag for the selected option
 function createTag(selectElement, value, text) {
@@ -74,16 +80,16 @@ document.getElementById('releaseDate').addEventListener('change', handleSelectCh
 
 //alert function
 window.onload = () => {
-  // for(let i=0; i<=2; i++){
-  //   let forcedTags = ['genre', 'length', 'releaseDate'];
-  //   let forcedTagTexts = ['Action', 'less than an hour', '1997'];
-  //   let selectElement = document.getElementById(forcedTags[i]);
-  //   let selectedValue = selectElement.value;
-  //   let selectedText = forcedTagTexts[i];
-  //   createTag(selectElement, selectedValue, selectedText);
-  // }
+  for(let i=0; i<=2; i++){
+    // let forcedTags = ['genre', 'length', 'releaseDate'];
+    // let forcedTagTexts = ['Action', 'less than an hour', '1997'];
+    // let selectElement = document.getElementById(forcedTags[i]);
+    // let selectedValue = selectElement.value;
+    // let selectedText = forcedTagTexts[i];
+    createTag(selectElement, selectedValue, selectedText);
+  }
   
-  //alert('Reminder: set previously selected filters through session.');
+  alert('Reminder: set previously selected filters through session.');
 }
 
 //validate filters
@@ -92,9 +98,33 @@ function validateFilters(event) {
     let validationMsg = document.createElement('p');
     validationMsg.classList.add('d-flex', 'text-danger', 'me-1');
     validationMsg.textContent = 'Please select at least one filter.';
-    document.getElementById('searchFormContainer').appendChild(validationMsg);
+    document.getElementById('filterDropdownWrapper').appendChild(validationMsg);
     event.preventDefault();
   }
 }
 //Attach listener to searchbutton
 document.getElementById('searchButton').addEventListener('click', validateFilters);
+
+//searchbar functionality
+document.addEventListener('DOMContentLoaded', function () {
+  const searchInput = document.getElementById('movieSearchInput');
+  const movieItems = document.querySelectorAll('.movie-item');
+
+  // Add an event listener to search input
+  searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    // Loop through all movie items
+    movieItems.forEach(function (movieItem) {
+      const titleElement = movieItem.querySelector('.movie-title');
+      const movieTitle = titleElement.textContent.toLowerCase();
+
+      // Show or hide the movie item based on search input
+      if (movieTitle.includes(searchTerm)) {
+        movieItem.style.display = 'flex'; // Show movie item
+      } else {
+        movieItem.style.display = 'none'; // Hide movie item
+      }
+    });
+  });
+});
